@@ -1,0 +1,154 @@
+extends layout
+
+block content
+    .modal.hide.fade#addstart(tabindex="-1")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type="button" ,data-dismiss="modal", aria-hidden="true")&times;
+                    h4.modal-title Add New Widget
+                .modal-body
+                    div.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x 1
+                    span
+                        strong Select the data source
+                    br
+                    //.btn-group
+                    //    a.btn.dropdown-toggle(data-toggle="dropdown",href="#") Action
+                    //        span.caret
+                    //    ul.dropdown-menu
+                    //        li A1
+                    //        li A2
+                    select#datasource(name="datasource")
+                    br
+                    br
+                    div.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x 2
+                    span
+                        strong Select the data variable
+                        br
+                    select#datavar(name="datavar")
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") Close
+                    button.btn.btn-primary#chartpage(type="button") Continue
+    .modal.hide.fade#addquant(tabindex="-1")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h4.modal-title Select Chart Type
+                .modal-body
+                    button.btn.btn-primary.chart-button#geo(type="button", style="padding:0px;margin:10px")
+                        img(src="images/geo.png",style="width:100px")
+                    button.btn.btn-primary.chart-button#hist(type="button", style="padding:0px;margin:10px")
+                        img(src="images/hist.png",style="width:100px")
+                    button.btn.btn-primary.chart-button#table(type="button", style="padding:0px;margin:10px")
+                        img(src="images/table.png",style="width:100px")
+                .modal-footer
+                    button.btn.btn-primary#genquant(type="button") Continue
+    .modal.hide.fade#addqual(tabindex="-1")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h4.modal-title Select Chart Type
+                .modal-body
+                    button.btn.btn-primary.chart-button#pie(type="button", style="padding:0px;margin:10px")
+                        img(src="images/pie.png",style="width:100px")
+                    button.btn.btn-primary.chart-button#donut(type="button", style="padding:0px;margin:10px")
+                        img(src="images/donut.png",style="width:100px")
+                    button.btn.btn-primary.chart-button#row(type="button", style="padding:0px;margin:10px")
+                        img(src="images/row.png",style="width:100px")
+                .modal-footer
+                    button.btn.btn-primary#genqual(type="button") Continue
+    .modal.hide.fade#tableconfig(tabindex="-1")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    h4.modal-title Select Table Columns
+                .modal-body.tablebody
+                    select#col0(name="col0")
+                    div.fa-stack.fa-lg.addtable
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x +
+                .modal-footer
+                    button.btn.btn-primary#gentable(type="button") Continue
+    //Settings
+    .modal.hide.fade#setstart(tabindex="-1")
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type="button", data-dismiss="modal", aria-hidden="true")&times;
+                    h4.modal-title Settings
+                .modal-body
+                    //Click-to-zoom
+                    div.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x 1 
+                    strong &nbsp Click-to-Zoom Feature &nbsp   
+                    .btn-group(data-toggle="buttons")      
+                        label.btn.btn-primary
+                            input(name='clickzoom', value='1', type='radio')
+                            | On                             
+                        label.btn.btn-primary
+                            input(name='clickzoom', value='0', type='radio')
+                            | Off
+                    //div.btn-group(data-toggle="buttons-radio")
+                        //button.btn.btn-primary.clickzoom#clickzoomOn(type="button") Enable click-to-zoom feature
+                        //button.btn.btn-primary.clickzoom#clickzoomOff(type="button") Disable click-to-zoom feature
+                    br
+                    br
+                    //Color Scheme
+                    div.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x 2
+                    span
+                    strong &nbsp Color Scheme &nbsp
+                    select#colorscheme.selectpicker
+                        option Default
+                        option Subdued
+                        option Color-blind
+                    br
+                    br
+                    //Detailed Sources
+                    div.fa-stack.fa-lg
+                        i.fa.fa-circle.fa-stack-2x
+                        i.fa.fa-inverse.fa-stack-1x 3 
+                    strong &nbsp Detailed Data Sources &nbsp   
+                    .btn-group(data-toggle="buttons")      
+                        label.btn.btn-primary
+                            input(name='detailedsources', value='1', type='radio')
+                            | On                             
+                        label.btn.btn-primary
+                            input(name='detailedsources', value='0', type='radio')
+                            | Off                            
+                            //detailedsources#detailedsourcesOn(type="button") Enable detailed data sources
+                        //button.btn.btn-primary.detailedsources#detailedsourcesOff(type="button") Disable detailed data sources
+                    br
+                    br
+                .modal-footer
+                    button.btn.btn-default(type="button", data-dismiss="modal") Cancel
+                    button.btn.btn-default#applysettings(type="button", data-dismiss="modal") Apply
+    //Wrapper
+    .container
+        .gridster
+            ul(style="list-style-type:none")
+                li(data-row="1",data-col="1",data-sizex="6",data-sizey="1", style="background-color:#333333;color:#dddddd; text-indent: 90px")
+                    h1= title
+                    p(style="text-indent: 150px") by Syed Husain
+                li#add(data-row="1",data-col="1",data-sizex="1",data-sizey="2", style="background-color:#2c52d1; text-align: center;font-size:21px;color:#5d83f2",href="#addstart",role="button",data-toggle="modal")
+                    br
+                    i.fa.fa-plus-square.fa-5x
+                    p Add
+                li#remove(data-row="1",data-col="1",data-sizex="1",data-sizey="2", style="background-color:#db004d;text-align: center;font-size:21px;color:#fb308d")
+                    br
+                    i.fa.fa-minus-square.fa-5x
+                    p Remove
+                li#settings(data-row="1",data-col="1",data-sizex="1",data-sizey="2", style="background-color:#008500;text-align: center;font-size:21px;color:#30b930",href="#setstart",role="button",data-toggle="modal")
+                    br
+                    i.fa.fa-cog.fa-5x
+                    p Settings
+                li#help(data-row="1",data-col="1",data-sizex="1",data-sizey="2", style="background-color:#e07902;text-align: center;font-size:21px;color:#ffab22")
+                    br
+                    i.fa.fa-question-circle.fa-5x
+                    p Help
